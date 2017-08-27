@@ -22,17 +22,17 @@ public class StudentGetTest {
 //	public void getAllStudentInfo() {
 //		
 //		Response response = given().when().get("/list");
-////		System.out.println(response.body().prettyPrint());                                      //printing in a pretty format
+//		System.out.println(response.body().prettyPrint());                                      //printing in a pretty format
 //		
 //		ValidatableResponse valResponse1 = given().when().get("/list").then().statusCode(200);  //validating response, reference variable is not needed
-////		ValidatableResponse valResponse2 = given().when().get("/list").then().log().status();   //printing the response code, reference variable is not needed	
+//		ValidatableResponse valResponse2 = given().when().get("/list").then().log().status();   //printing the response code, reference variable is not needed	
 //	}
 //	
 //	@Test
 //	public void getStudentFromFA() {
 //		
 //		Response response = given().when().get("/list?pragramme=Financial Analysis&limit=2");
-////		System.out.println(response.prettyPeek());                                              //printing data for students in FA in a pretty format
+//		System.out.println(response.prettyPeek());                                              //printing data for students in FA in a pretty format
 //	}
 	
 //	@Test
