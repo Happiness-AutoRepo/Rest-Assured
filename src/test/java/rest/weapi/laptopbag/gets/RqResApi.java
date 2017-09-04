@@ -1,7 +1,9 @@
 package rest.weapi.laptopbag.gets;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.*;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -9,6 +11,8 @@ import org.junit.Test;
 
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
 import rest.webapi.laptopbag.helpers.RestHelpers;
 import rest.webapi.laptopbag.helpers.RestHelpers.Methods;
 
@@ -42,7 +46,28 @@ public class RqResApi {
 		
 		List<String> laptopsApple = jsonBody.getList("findAll{it.BrandName=='Lenovo'}.Id");
 		System.out.println(laptopsApple);
-		
 	}
+	
+	@Test
+	public void XmlPathSamples() throws URISyntaxException {
+		/*
+		 * Given accept type is xml
+		 * When I perform GET request to get all laptops
+		 * Then status is 200
+		 * And I can navigate through XML using XmlPath
+		 */
+		
+		URI uri = new URI(RestHelpers.buildURI(Methods.ALL));
+		
+		Response response = given().accept(ContentType.XML).when().get(uri);        // helper method didn't work
+							//given().accept(ContentType.XML).when().get(uri);
+		assertEquals(200, response.getStatusCode());
+		XmlPath xml = new XmlPath(response.body().asString());
+		
+		List<String> brandNames = xml.getList("laptopDetailss.Laptop.BrandName");
+		System.out.println(brandNames);
+	}
+	
+	
 	
 }
